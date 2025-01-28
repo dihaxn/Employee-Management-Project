@@ -1,12 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 const AddCourse = () => {
-    return(
+    return (
         <div>
-
+            <h2>Add Course Page</h2>
         </div>
+    );
+};
 
-    )
-}
-
-export default AddCourse
+export default AddCourse;

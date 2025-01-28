@@ -1,12 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 const StudentsEnrolled = () => {
-    return(
+    return (
         <div>
-
+            <h2>Students Enrolled</h2>
         </div>
+    );
+};
 
-    )
-}
-
-export default  StudentsEnrolled
+export default StudentsEnrolled;
