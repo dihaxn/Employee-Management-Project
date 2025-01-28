@@ -1,12 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 const Player = () => {
-    return(
+    return (
         <div>
-
+            <h2>Player Page</h2>
         </div>
+    );
+};
 
-    )
-}
-
-export default  Player
+export default Player;
