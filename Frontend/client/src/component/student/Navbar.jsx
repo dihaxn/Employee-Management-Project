@@ -1,27 +1,44 @@
-import React from 'react'
-import {assets} from "../../assets/assets.js";
+import React from 'react';
+import { Routes, Route, useMatch } from 'react-router-dom';
+import Home from './pages/student/Home.jsx';
+import CoursesList from './pages/student/CoursesList.jsx';
+import CourseDetails from './pages/student/CourseDetails.jsx';
+import MyEnrollments from './pages/student/MyEnrollments.jsx';
+import Player from './pages/student/Player.jsx';
+import Loading from './component/student/Loading.jsx';
+import Educator from './pages/educator/Educator.jsx';
+import DashBoard from './pages/educator/DashBoard.jsx';
+import AddCourse from './pages/educator/AddCourse.jsx';
+import MyCourses from './pages/educator/MyCourses.jsx';
+import StudentsEnrolled from './pages/educator/StudentsEnrolled.jsx';
+import Navbar from "./component/student/Navbar.jsx";
 
-const Navbar = () => {
+const App = () => {
+    const isEducatorRoute = !!useMatch('/educator/*'); // Ensure it's a boolean
 
-    const isCourseListPage = location.pathname.includes('/course-list');
+    return (
+        <div className="text-default min-h-screen bg-white">
+            {!isEducatorRoute && <Navbar />}
+            <Routes>
+                {/* Student Routes */}
+                <Route path="/" element={<Home />} />
+                <Route path="/course-list" element={<CoursesList />} />  {/* Corrected path */}
+                <Route path="/course/:id" element={<CourseDetails />} />
+                <Route path="/my-enrollments" element={<MyEnrollments />} />
+                <Route path="/course-list/:input" element={<CoursesList />} />
+                <Route path="/player/:courseId" element={<Player />} />
+                <Route path="/loading/:path" element={<Loading />} />
 
-
-    return(
-        <div className={'flex items-center justify-between px-4 sm:px-10 md:px-14 lg:px-36 border-b border-gray-500 py-4 ${isCourseListPage ? 'bg-white' :'bg-cyan-100/70'}'}>
-            <img src={assets.logo} alt="Logo" className='w-28 lg:w-32 cursor-pointer'/>
-
-            <div className='hidden md:flex items-center justify-center gap-5 text-gray-500'>
-                <div>
-                    <button>Become Educator</button>
-                   | <link to='/my-enrollments'>My Enrollments</link>
-                </div>
-                <button className='bg-blue-600 text-white px-5 py-2 rounded-full'>Create Accounts</button>
-            </div>
-
-            <div></div>
+                {/* Educator Routes - Nested Properly */}
+                <Route path="/educator" element={<Educator />}>
+                    <Route index element={<DashBoard />} /> {/* Default route inside /educator */}
+                    <Route path="add-course" element={<AddCourse />} />
+                    <Route path="my-courses" element={<MyCourses />} />
+                    <Route path="students-enrolled" element={<StudentsEnrolled />} />
+                </Route>
+            </Routes>
         </div>
+    );
+};
 
-    )
-}
-
-export default Navbar;
+export default App;
