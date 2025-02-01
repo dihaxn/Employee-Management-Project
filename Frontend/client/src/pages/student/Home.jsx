@@ -1,10 +1,12 @@
+// Home.jsx
 import React from 'react';
+import Hero from "../../component/student/Hero.jsx";
 
-// Introduced duplicate default exports for Home component
 const Home = () => {
     return (
-        <div>
-        </div>
+        <div className='flex flex-col items-center space-y-7'>
+            <Hero/>
+
     );
 };
 
