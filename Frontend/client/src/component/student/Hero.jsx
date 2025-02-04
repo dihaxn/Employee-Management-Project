@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { assets } from "../../assets/assets.js";
 import SearchBar from "./SearchBar.jsx";
