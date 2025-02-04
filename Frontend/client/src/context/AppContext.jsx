@@ -23,7 +23,7 @@ export const AppProvider = (props) => {
     }, []);
 
     const value = {
-       currency,allCourses
+        currency,allCourses
     };
 
     return (
